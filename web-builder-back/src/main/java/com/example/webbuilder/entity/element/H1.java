@@ -6,9 +6,9 @@ import lombok.Setter;
 @Getter
 public class H1 {
 
-    private String value;
+    private String h1;
 
     public H1(String value) {
-        this.value = value;
+        this.h1 = value;
     }
 }

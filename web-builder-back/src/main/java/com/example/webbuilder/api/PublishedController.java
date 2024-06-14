@@ -5,19 +5,18 @@ import com.example.webbuilder.entity.Page;
 import com.example.webbuilder.service.PageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/web")
+@RequestMapping("/published")
 @RequiredArgsConstructor
-public class WebPageController {
+public class PublishedController {
 
     private final PageService pageService;
 
-    @GetMapping("/pages/{pageId}")
-    public PublishedPageDto getPage(@PathVariable String pageId){
+    @GetMapping("/pages")
+    public PublishedPageDto getPage(){
         Page page = pageService.getPage();
         return new PublishedPageDto(page);
     }

@@ -2,15 +2,16 @@ package com.example.webbuilder.entity.element;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
-public class ShortText {
+public class H2 {
 
 
-    private String value;
+    private String h2;
 
-    public ShortText(String value) {
-        this.value = value;
+    public H2(String value) {
+        this.h2 = value;
     }
 
 }

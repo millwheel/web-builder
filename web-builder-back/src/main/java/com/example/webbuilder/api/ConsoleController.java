@@ -16,8 +16,8 @@ public class ConsoleController {
 
     private final PageService pageService;
 
-    @GetMapping("/pages/{pageId}")
-    public ConsolePageDto getPage(@PathVariable String pageId){
+    @GetMapping("/pages")
+    public ConsolePageDto getPage(){
         Page page = pageService.getPage();
         return new ConsolePageDto(page);
     }

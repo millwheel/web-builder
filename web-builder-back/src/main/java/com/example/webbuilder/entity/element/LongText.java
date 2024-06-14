@@ -4,13 +4,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-public class RichText {
+public class LongText {
 
 
-    private String value;
+    private String longText;
 
-    public RichText(String value) {
-        this.value = value;
+    public LongText(String value) {
+        this.longText = value;
     }
 
 }
