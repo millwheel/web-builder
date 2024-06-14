@@ -59,6 +59,7 @@ button:hover {
   display: grid;
   grid-template-areas:
     "header header"
+    "banner banner"
     "side body"
     "footer footer";
   grid-template-columns: 1fr 3fr;
@@ -80,6 +81,10 @@ button:hover {
 
 .section.side {
   grid-area: side;
+}
+
+.section.banner {
+  grid-area: banner;
 }
 
 .section.body {

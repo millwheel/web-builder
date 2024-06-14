@@ -9,6 +9,8 @@ const ElementComponent = ({ element }) => {
                     <span key={index}>{text.shortText || text.value}<br/></span>
                 ))
                 : null;
+            const longText = value.longText ? value.longText : null;
+            const image = value.imageUrl ? value.imageUrl : null;
 
             return (
                 <div>
@@ -16,6 +18,8 @@ const ElementComponent = ({ element }) => {
                     {h2 && <h2>{h2}</h2>}
                     {h3 && <h3>{h3}</h3>}
                     {shortTexts && <span>{shortTexts}</span>}
+                    {longText && <span>{longText}</span>}
+                    {image && <img src={image} alt={image.name} />}
                 </div>
             );
         }

@@ -11,6 +11,7 @@ public class PageService {
     public Page getPage(){
         Page defaultPage = Page.createDefaultPage("ESG report page 1", "/page1", "logblack simple style 1");
         addHeaderSection(defaultPage);
+        addBannerSection(defaultPage);
         addSideSection(defaultPage);
         addBodySection(defaultPage);
         addFooterSection(defaultPage);
@@ -41,6 +42,22 @@ public class PageService {
         page.addSection(section);
     }
 
+    private void addBannerSection(Page page) {
+        Element firstBanner = Element.createImageBlockElement("첫번째 배너", "banner1.png", "2023 지속가능성보고서 데모버전", List.of("테스트용으로 제작한 지속가능성보고서입니다."), 1);
+        Element secondBanner = Element.createSimpleImageElement("두번째 배너", "banner2.png", 2);
+        Element thirdBanner = Element.createSimpleImageElement("세번째 배너", "banner3.png", 3);
+
+        Content banner = Content.createContent("banner", ContentType.SLIDE_BANNER, 3, 1);
+        banner.addElement(firstBanner);
+        banner.addElement(secondBanner);
+        banner.addElement(thirdBanner);
+
+        Section section = Section.createSection(SectionType.BANNER);
+        section.addContent(banner);
+
+        page.addSection(section);
+    }
+
     private void addSideSection(Page page){
         // element
         Element nav1 = Element.createNavigationElementWithImage("nav1", "GRI 2 일반", List.of(), "/point.png", 1);
@@ -62,23 +79,14 @@ public class PageService {
 
     private void addBodySection(Page page){
         // element
-        Element firstBanner = Element.createImageBlockElement("첫번째 배너", "banner1.png", "2023 지속가능성보고서 데모버전", List.of("테스트용으로 제작한 지속가능성보고서입니다."), 1);
-        Element secondBanner = Element.createSimpleImageElement("두번째 배너", "banner2.png", 2);
-        Element thirdBanner = Element.createSimpleImageElement("세번째 배너", "banner3.png", 3);
-
-        Element greetingH1 = Element.createH1Element("인사말", "안녕하십니까 로그블랙입닌다.", 1);
+        Element greetingH1 = Element.createH1Element("인사말", "안녕하십니까 로그블랙입니다.", 1);
         Element space1 = Element.createLongTextElement("띄어쓰기", "", 2);
         Element greetingH2 = Element.createH2Element("붙임말", "ESG SaaS 선도하는 기업", 3);
-        Element greetingContent = Element.createLongTextElement("인사말 내용", "지속가능경영, 로그블랙이 함께 하겠습니다.", 4);
+        Element greetingContent = Element.createLongTextElement("인사말 내용", "지속가능경영, 함께 하겠습니다.", 4);
 
         Element financialAbstractH1 = Element.createH1Element("경제실적", "경제 실적 요약", 1);
         Element financialAbstractContent = Element.createLongTextElement("경제실적 내용", "우선 우리 기업은 지난 1년간...", 2);
         // content
-        Content banner = Content.createContent("banner", ContentType.SLIDE_BANNER, 3, 1);
-        banner.addElement(firstBanner);
-        banner.addElement(secondBanner);
-        banner.addElement(thirdBanner);
-
         Content topic1 = Content.createContent("topic1", ContentType.TOPIC, 999, 2);
         topic1.addElement(greetingH1);
         topic1.addElement(space1);
@@ -90,7 +98,7 @@ public class PageService {
         topic2.addElement(financialAbstractContent);
         // section
         Section section = Section.createSection(SectionType.BODY);
-        section.addContent(banner);
+
         section.addContent(topic1);
         section.addContent(topic2);
         // page
