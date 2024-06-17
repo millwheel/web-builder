@@ -1,6 +1,8 @@
 package com.example.webbuilder2.entity.content;
 
 
+import com.example.webbuilder2.entity.dto.ElementCreateDto;
+import com.example.webbuilder2.entity.type.ElementType;
 import com.example.webbuilder2.generator.IdGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +31,8 @@ public class Content {
         return content;
     }
 
-    public void addElement(String name, String label, int sort, long elementTypeId){
-        Element element = Element.createElement(name, label, sort, elementTypeId, this);
+    public void addElement(ElementCreateDto elementCreateDto, int sort, ElementType elementType, Element parent){
+        Element element = Element.createElement(elementCreateDto.getName(), elementCreateDto.getLabel(), sort, elementType, elementCreateDto.getValue(), this, parent);
         this.elements.add(element);
     }
 
@@ -52,10 +54,6 @@ public class Content {
 
     private void setSort(int sort) {
         this.sort = sort;
-    }
-
-    public void addElement(Element element){
-        this.elements.add(element);
     }
 
 }

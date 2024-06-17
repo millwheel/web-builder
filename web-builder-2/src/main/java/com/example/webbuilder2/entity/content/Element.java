@@ -1,5 +1,8 @@
 package com.example.webbuilder2.entity.content;
 
+import com.example.webbuilder2.entity.type.ElementType;
+import com.example.webbuilder2.entity.type.ValueType;
+import com.example.webbuilder2.generator.IdGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,14 +27,30 @@ public class Element {
     private Content content;
     private Element parent;
 
-    protected static Element createElement(String name, String label, int sort, long elementTypeId, Content content){
+    protected static Element createElement(String name, String label, int sort, ElementType elementType, Object value, Content content, Element parent){
         Element element = new Element();
+        element.setId(IdGenerator.generateId());
         element.setName(name);
         element.setLabel(label);
         element.setSort(sort);
-        element.setElementTypeId(elementTypeId);
+        element.setElementTypeId(elementType.getId());
+        element.setValue(elementType, value);
         element.setContent(content);
+        element.setParent(parent);
         return element;
+    }
+
+    protected void setValue(ElementType elementType, Object value){
+        ValueType valueType = elementType.getValueType();
+        if (valueType.equals(ValueType.COMPOSITE) || valueType.equals(ValueType.REPEATABLE)) return;
+
+        switch (valueType){
+            case SHORT_TEXT -> this.shortText = (String) value;
+            case LONG_TEXT -> this.longText = (String) value;
+            case RICH_TEXT -> this.richText = (String) value;
+            case LINK -> this.linkId = (int) value;
+            case ATTACHMENT -> this.attachmentId = (int) value;
+        }
     }
 
 
